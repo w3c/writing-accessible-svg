@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>New SVG accessibility note - DRAFT</title>
+</head>
+
+<body>
+<h1>SVG 2 accessibility</h1>
+
+<p>This is a stub. The idea is to add to it until it turns into a document. That will take a lot of pull requests.</p>
+
+<p>Editor: <a href="mailto:chaals@yandex-team.ru">chaals</a>, <a href="http://yandex.ru">Яндекс</a> /
+<a href="http://yandex.com">Yandex</a></p>
+<section>
+
+<h2>Things that are still true</h2>
+
+<p>(i.e. since the publication of SVG 1 and the poor <a href="http://www.w3.org/TR/2000/NOTE-SVG-access-20000807">old
+SVG accessibility note</a>)</p>
+
+<h3>basic shapes</h3>
+
+<p>SVG has a set of <a href="http://www.w3.org/TR/SVG2/shapes.html">basic shape elements</a>. They can be used to create simple geometric figures like rectangles, circles, ellipses, lines and polygons. When these elements are used, information about the shape is encoded into the SVG image where it may be used by assistive technologies.</p>
+
+<p>*** Example: basic shapes.</p>
+
+<p>SVG <a href="http://www.w3.org/TR/SVG2/paths.html#TermEquivalentPath">paths</a> are used to create non-standard shapes (leaves or fish for example). Whilst paths make SVG very flexible, it is quite hard to translate the information encoded into the image into real shapes.</p>
+
+<p>*** Example: path.</p>
+
+<p>In most cases this doesn't matter, and the <a href="#titledesc">title and desc elements</a> can be used to provide appropriate information about the contents of non-standard SVG shapes. There are cases where using basic shapes will make things clearer to people consuming SVG images using assistive technologies though.</p>
+
+<p>*** Use cases?</p>
+
+<h3><a href="http://www.w3.org/TR/SVG-access/#Re-Using">Re-usable components"</a></h3>
+
+<p>the <code>use</code> element gives SVG something like what Web Components is still trying
+to bring to HTML a decade-odd later. The ability to take a well-known component, and re-use it
+with a bit of relevant styling or other tweaking in turn supports the Web as a medium for annotating
+objects identified by a URL (such as <code>defs</code>) to support accessibility.</p>
+
+<h3 id="titleanddesc"><a href="https://svgwg.org/svg2-draft/struct.html#DescriptionAndTitleElements">title and description</a></h3>
+
+<p>Providing an equivalent text alternative for SVG content helps make it accessible to people with disabilities. The text alternative fulfils the same function or purpose for people with disabilities, as the primary content does for people without a disability.</p>
+
+<p>Text alternatives must be provided for all graphical (and other non-text) content. Refer to <a href="http://www.w3.org/TR/WCAG20/#text-equiv">WCAG 2.0 Guideline 1.1</a> for more information.</p>
+
+<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are used to provide text alternatives for SVG content. Each container or graphics element within an SVG image can have one (or more) title and desc elements.</p>
+
+<ul>
+<li>The <code>&lt;title&gt;</code> element provides a short human-readable name for the element that contains it. At least one title should be provided for every SVG image.</li>
+<li>The <code>&lt;desc&gt;</code> element provides a longer human-readable description of the element that contains it. A description should be provided for complex SVG content, or where the SVG fulfils a particular function or purpose.</li>
+</ul>
+
+<p>*** Simple title/desc example.</p>
+
+<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are not rendered as part of the SVG content by default. Browsers may make the title element available as a tooltip when focus moves to the element that the title belongs to, and CSS may be used to make the title and/or desc elements visible in other ways.</p>
+
+<p>The <code>&lt;title&gt;</code> element maps to the accessible name property in the browser’s accessibility <abbr title="Accessibility Programming Interface">API</abbr>,  and the desc element to the accessible description property. Refer to the <a href="http://rawgit.com/w3c/aria/master/svg-aam/svg-aam.html">SVG Accessibility API mappings</a> for more information. This means that assistive technologies can use the title and desc elements to identify and describe the SVG content to people with disabilities. For example, a screen reader will announce the title and description using synthetic speech.</p>
+
+<p>The way you can use these at appropriate levels of structure is a very nice thing.</p>
+<p>Because they are elements and not attributes you can do things like add <code>lang</code> attributes,
+to simplify the use of multilingual content. See the next section, too.</p>
+
+
+<h3>The <a href="https://svgwg.org/svg2-draft/struct.html#XMLLangAttribute"><code>xml:lang</code> attribute</a></h3>
+
+<p>xml:lang in text elements and desc/title can be used to  meet
+<a href="http://www.w3.org/TR/WCAG20/#meaning">WCAG 2.0 requirement 3.1.1</a>.</p>
+
+<p>Allegedly it might be changed to lang, but that will mess with the
+<a href="https://svgwg.org/svg2-draft/fonts.html#GlyphElementLangAttribute">lang attribute in fonts</a> (how does that
+work now in SVG embedded in HTML5 ?)</p>
+
+<p>Examples of using it in text, and in title/desc elements</p>
+
+<h3><a href="https://svgwg.org/svg2-draft/struct.html#DOMInterfaces">DOM</a></h3>
+
+<p>Everything now uses the DOM, so it's helpful to have one.</p>
+
+<h3><a href="http://www.w3.org/TR/SVG-access/#Fonts">Fonts</a></h3>
+
+<p>Now enhanced to match the new technology, fonts are a much nicer thing to do than simply adding a lot of paths
+to convey some text.</p>
+</section>
+<section>
+<h2>New improvements</h2>
+
+<h3><a href="https://svgwg.org/svg2-draft/interact.html#Focus">tabindex</a></h3>
+
+<p>Being able to build a keyboard navigation map around an SVG is a great thing. Element-wise navigation is a
+fallback strategy for users who don't have a choice, but it is unlikely to be a good one if the author has done a
+half-way reasonable job.</p>
+
+<p>Describe tabindex attribute, plus outcome of using -integer, 0, or +integer values.</p>
+
+<p>And other keyboard related things, like the
+<a href="https://svgwg.org/svg2-draft/interact.html#focusable">focusable</a> attribute</p>
+
+<h3><a href="https://svgwg.org/svg2-draft/struct.html#WAIARIAAttributes">ARIA attributes</a></h3>
+
+<p>The ARIA role attribute (<a href="https://svgwg.org/svg2-draft/struct.html#roleattribute">5.10.1</a>), based on
+the <a href="http://www.w3.org/TR/wai-aria/roles#role_definitions">ARIA roles definitions</a>. ARIA properties
+and states (<a href="https://svgwg.org/svg2-draft/struct.html#ARIAStateandPropertyAttributes">5.10.2</a>), as
+defined in <a href="http://www.w3.org/TR/wai-aria/states_and_properties#state_prop_def">ARIA states and properties</a>.
+Plus implicit ARIA semantics (<a href="https://svgwg.org/svg2-draft/struct.html#implicit-aria-semantics">5.10.3</a>).</p>
+
+<p>For example, can use <a href="http://www.w3.org/TR/wai-aria/roles#img">role="img"</a> on the
+<code>&lt;svg&gt;</code> element. The <a href="http://www.w3.org/TR/wai-aria/roles#presentation">role="presentation"</a>
+can also be used to remove child shape elements from the accessibility API. The <a
+href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-label">aria-label</a>and
+<a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby">aria-labelledby</a>
+attributes can be used to associate the <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements.
+The <a href="www.w3.org/TR/wai-aria/states_and_properties#aria-label">aria-describedby</a> attribute can also
+be used, but has poor AT support in spite of reasonable  browser support.</p>
+
+<p>Info on <a href="http://blog.paciellogroup.com/2013/12/using-aria-enhance-svg-accessibility/">basic ARIA SVG
+support</a>, plus simple <a href="https://dl.dropboxusercontent.com/u/2805347/web/test-cases-svg-aria.html">SVG
+ARIA test cases</a>.</p>
+</section>
+<section>
+<h2>Just different</h2>
+
+<h3>onclick is accessible now</h3>
+
+<p>DOMActivate was dropped because it was unnecessary, and unhelpful. Lack of browser support and lack of author
+usage fed a vicious circle.</p>
+
+<p>But onclick can be triggered by almost any mode of interaction - which was what DOMActivate tried to enable.
+So we have the functionality, even if it has a name that seems limiting.</p>
+</section>
+<section>
+<h2>Acknowledgements</h2>
+<p>The editor would like to Acknowledge Marja-Riitta Koivonen for making the original SVG Accessibility Note happen,
+and Doug Schepers and Jennifer Sutton for making this version happen.</p>
+<p>Thanks are due for the contributions from Léonie Watson</p>
+</section>
+</body>
+</html>
