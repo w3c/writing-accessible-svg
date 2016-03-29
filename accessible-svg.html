@@ -76,6 +76,37 @@ to bring to HTML a decade-odd later. The ability to take a well-known component,
 with a bit of relevant styling or other tweaking in turn supports the Web as a medium for annotating
 objects identified by a URL (such as <code>defs</code>) to support accessibility.</p>
 
+<div class="example">
+<pre><code>&lt;svg width="250" height="100"&gt;
+  &lt;defs&gt;
+    &lt;rect id="theRect" width="100%" height="100%" style="fill: #c8a2c8;" &gt;
+      &lt;desc&gt;
+        A purple rectangle, 2 and half times as wide as it is long.
+      &lt;/desc&gt;
+    &lt;/rect&gt;
+  &lt;/defs&gt;
+  &lt;use xlink:href="#theRect"&gt; 
+    &lt;title id="c2title"&gt;Rectangle&lt;/title&gt;
+  &lt;/use&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>Gives:</p>
+
+<svg width="250" height="100">
+  <defs>
+    <rect id="theRect" width="100%" height="100%" style="fill: #c8a2c8;">
+      <desc>
+        A purple rectangle, 2 and half times as wide as it is long.
+      </desc>
+    </rect>
+  </defs>
+  <use xlink:href="#theRect"> 
+    <title id="c2title">Rectangle</title>
+  </use>
+</svg>
+</div>
+
 <h3 id="titleanddesc"><a href="https://svgwg.org/svg2-draft/struct.html#DescriptionAndTitleElements">title and description</a></h3>
 
 <p>Providing an equivalent text alternative for SVG content helps make it accessible to people with disabilities. The text alternative fulfils the same function or purpose for people with disabilities, as the primary content does for people without a disability.</p>
@@ -89,9 +120,10 @@ objects identified by a URL (such as <code>defs</code>) to support accessibility
 <li>The <code>&lt;desc&gt;</code> element provides a longer human-readable description of the element that contains it. A description should be provided for complex SVG content, or where the SVG fulfils a particular function or purpose.</li>
 </ul>
 
-<p>*** Simple title/desc example.</p>
+<pre><code>
+</code></pre>
 
-<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are not rendered as part of the SVG content by default. Browsers may make the title element available as a tooltip when focus moves to the element that the title belongs to, and CSS may be used to make the title and/or desc elements visible in other ways.</p>
+<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are not rendered as part of the SVG content by default. Browsers often make the title element available as a tooltip when focus moves to the element that the title belongs to, and CSS may be used to make the title and/or desc elements visible in other ways.</p>
 
 <p>The <code>&lt;title&gt;</code> element maps to the accessible name property in the browser’s accessibility <abbr title="Accessibility Programming Interface">API</abbr>,  and the desc element to the accessible description property. Refer to the <a href="http://rawgit.com/w3c/aria/master/svg-aam/svg-aam.html">SVG Accessibility API mappings</a> for more information. This means that assistive technologies can use the title and desc elements to identify and describe the SVG content to people with disabilities. For example, a screen reader will announce the title and description using synthetic speech.</p>
 
