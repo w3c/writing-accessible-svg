@@ -107,6 +107,10 @@ objects identified by a URL (such as <code>defs</code>) to support accessibility
 </svg>
 </div>
 
+<p class="bestpractice">Authors should include a <code>desc</code> element for each graphical object defined in the <code>defs</code> that they reference with a <code>use</code> element.</p>
+
+<p class="compatibility">Authors should use <code>aria-labelledby</code> referencing to a <code>title</code> element within the <code>use</code> element that clones the graphical object.</p>
+
 <h3 id="titleanddesc"><a href="https://svgwg.org/svg2-draft/struct.html#DescriptionAndTitleElements">title and description</a></h3>
 
 <p>Providing an equivalent text alternative for SVG content helps make it accessible to people with disabilities. The text alternative fulfils the same function or purpose for people with disabilities, as the primary content does for people without a disability.</p>
