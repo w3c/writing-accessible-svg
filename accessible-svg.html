@@ -13,10 +13,9 @@
           noRecTrack: true,
           shortName:  "writing-accessible-svg",
           editors: [
-                {   name:       "Chaals McCathie Nevile",
+                {   name:       "Chaals Nevile",
                     url:        "http://chaals/",
-                    company:    "Yandex",
-                    companyURL: "http://yandex.com/" }
+                    company:    "Littleguy" }
           ],
           otherLinks: [{
             key: "Version history",
@@ -57,23 +56,25 @@ SVG accessibility note</a>)</p>
 
 <h3>basic shapes</h3>
 
-<p>SVG has a set of <a href="http://www.w3.org/TR/SVG2/shapes.html">basic shape elements</a>. They can be used to create simple geometric figures like rectangles, circles, ellipses, lines and polygons. When these elements are used, information about the shape is encoded into the SVG image where it may be used by assistive technologies.</p>
+<p>SVG has a set of <a href="http://www.w3.org/TR/SVG2/shapes.html">basic shape elements</a>. They can be used to create simple geometric figures like rectangles, circles, ellipses, lines and polygons.
+    When these elements are used, information about the shape is encoded into the SVG image where it may be used by assistive technologies.</p>
 
 <p>*** Example: basic shapes.</p>
 
-<p>SVG <a href="http://www.w3.org/TR/SVG2/paths.html#TermEquivalentPath">paths</a> are used to create non-standard shapes (leaves or fish for example). Whilst paths make SVG very flexible, it is quite hard to translate the information encoded into the image into real shapes.</p>
+<p>SVG <a href="http://www.w3.org/TR/SVG2/paths.html#TermEquivalentPath">paths</a> are used to create non-standard shapes (leaves or fish for example).
+    Whilst paths make SVG very flexible, it is quite hard to translate the information encoded into the image into real shapes.</p>
 
 <p>*** Example: path.</p>
 
-<p>In most cases this doesn't matter, and the <a href="#titledesc">title and desc elements</a> can be used to provide appropriate information about the contents of non-standard SVG shapes. There are cases where using basic shapes will make things clearer to people consuming SVG images using assistive technologies though.</p>
+<p>In most cases this doesn't matter, and the <a href="#titledesc">title and desc elements</a> can be used to provide appropriate information about the contents of non-standard SVG shapes.
+    There are cases where using basic shapes will make things clearer to people consuming SVG images using assistive technologies though.</p>
 
 <p>*** Use cases?</p>
 
 <h3><a href="http://www.w3.org/TR/SVG-access/#Re-Using">Re-usable components"</a></h3>
 
-<p>the <code>use</code> element gives SVG something like what Web Components is still trying
-to bring to HTML a decade-odd later. The ability to take a well-known component, and re-use it
-with a bit of relevant styling or other tweaking in turn supports the Web as a medium for annotating
+<p>the <code>use</code> element gives SVG the ability to take a well-known component, and re-use it
+with a bit of relevant styling or other tweaking. This in turn supports the Web as a medium for annotating
 objects identified by a URL (such as <code>defs</code>) to support accessibility.</p>
 
 <div class="example">
@@ -113,23 +114,30 @@ objects identified by a URL (such as <code>defs</code>) to support accessibility
 
 <h3 id="titleanddesc"><a href="https://svgwg.org/svg2-draft/struct.html#DescriptionAndTitleElements">title and description</a></h3>
 
-<p>Providing an equivalent text alternative for SVG content helps make it accessible to people with disabilities. The text alternative fulfils the same function or purpose for people with disabilities, as the primary content does for people without a disability.</p>
+<p>Providing an equivalent text alternative for SVG content helps make it accessible to people with disabilities. 
+    The text alternative fulfils the same function or purpose for people with disabilities, as the primary content does for people without a disability.</p>
 
 <p>Text alternatives must be provided for all graphical (and other non-text) content. Refer to <a href="http://www.w3.org/TR/WCAG20/#text-equiv">WCAG 2.0 Guideline 1.1</a> for more information.</p>
 
-<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are used to provide text alternatives for SVG content. Each container or graphics element within an SVG image can have one (or more) title and desc elements.</p>
+<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are used to provide text alternatives for SVG content. 
+    Each container or graphics element within an SVG image can have one (or more) title and desc elements.</p>
 
 <ul>
 <li>The <code>&lt;title&gt;</code> element provides a short human-readable name for the element that contains it. At least one title should be provided for every SVG image.</li>
-<li>The <code>&lt;desc&gt;</code> element provides a longer human-readable description of the element that contains it. A description should be provided for complex SVG content, or where the SVG fulfils a particular function or purpose.</li>
+<li>The <code>&lt;desc&gt;</code> element provides a longer human-readable description of the element that contains it.
+    A description should be provided for complex SVG content, or where the SVG fulfils a particular function or purpose.</li>
 </ul>
 
 <pre><code>
 </code></pre>
 
-<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are not rendered as part of the SVG content by default. Browsers often make the title element available as a tooltip when focus moves to the element that the title belongs to, and CSS may be used to make the title and/or desc elements visible in other ways.</p>
+<p>The <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> elements are not rendered as part of the SVG content by default. 
+    Browsers often make the title element available as a tooltip when focus moves to the element that the title belongs to, and CSS may be used to make the title and/or desc elements visible in other ways.</p>
 
-<p>The <code>&lt;title&gt;</code> element maps to the accessible name property in the browser’s accessibility <abbr title="Accessibility Programming Interface">API</abbr>,  and the desc element to the accessible description property. Refer to the <a href="http://rawgit.com/w3c/aria/master/svg-aam/svg-aam.html">SVG Accessibility API mappings</a> for more information. This means that assistive technologies can use the title and desc elements to identify and describe the SVG content to people with disabilities. For example, a screen reader will announce the title and description using synthetic speech.</p>
+<p>The <code>&lt;title&gt;</code> element maps to the accessible name property in the browser’s accessibility <abbr title="Accessibility Programming Interface">API</abbr>
+    and the desc element to the accessible description property. Refer to the <a href="http://rawgit.com/w3c/aria/master/svg-aam/svg-aam.html">SVG Accessibility API mappings</a> for more information.
+    This means that assistive technologies can use the title and desc elements to identify and describe the SVG content to people with disabilities.
+    For example, a screen reader will announce the title and description using synthetic speech.</p>
 
 <p>The way you can use these at appropriate levels of structure is a very nice thing.</p>
 <p>Because they are elements and not attributes you can do things like add <code>lang</code> attributes,
